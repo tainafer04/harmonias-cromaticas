@@ -1,16 +1,17 @@
 :root {
-    --cor-primaria: #780000;
-    --cor-secundaria: #C1121F;
+    --cor-primaria: #780070;
+    --cor-secundaria: #c11223;
     --cor-terciaria: #FDF0D5;
-    --cor-quaternaria: #003049;
-    --cor-quintenaria: #669BBC;
-    --cor-texto: #333333;
+    --cor-quaternaria: #490038;
+    --cor-quintenaria: #bc6666;
+    --cor-texto: #560966;
     --cor-fundo: #FDF0D5;
 }
 
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-size: 18px;
+    line-height: 1.8;
     color: var(--cor-texto);
     background-color: var(--cor-fundo);
     margin: 0;
@@ -31,21 +32,25 @@ header h1 {
     margin: 0;
 }
 
-header p {
-    margin: 5px 0 0;
+main {
+    padding: 20px;
+    flex: 1;
 }
 
+/* Garante que as seções tenham um tamanho adequado */
 section {
+    max-width: 800px; /* Define um limite para não ficar muito largo */
+    margin: 20px auto;
     padding: 20px;
-    margin: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    flex: 1;
+    overflow: hidden; /* Garante que nada saia da div */
 }
 
 h2 {
     color: var(--cor-quaternaria);
+    font-size: 22px;
 }
 
 ul {
@@ -53,23 +58,72 @@ ul {
     padding-left: 20px;
 }
 
-.harmonia-imagens {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
+a {
+    color: var(--cor-quaternaria);
+    font-weight: bold;
+    text-decoration: underline;
 }
 
-.harmonia-imagens img {
+a:hover {
+    color: var(--cor-quintenaria);
+}
+
+/* IMAGENS AGORA FICAM SEMPRE DENTRO DA DIV */
+.imagem-padrao {
+    max-width: 80%; /* Nunca ultrapassa a largura do container */
+    max-height: 400px; /* Evita imagens gigantes */
+    display: block;
+    margin: 20px auto;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    object-fit: cover; /* Ajusta a imagem sem distorcer */
+}
+
+/* Para imagens muito largas, forçar largura máxima */
+section img {
+    max-width: 70%;
+    height: auto;
+    display: block;
+    margin: auto;
 }
 
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     background-color: var(--cor-quaternaria);
     color: var(--cor-terciaria);
     width: 100%;
     margin-top: auto;
+}
+
+/* Responsividade para telas de PC */
+@media (min-width: 1024px) {
+    /* Imagens menores em telas maiores */
+    .imagem-padrao {
+        max-height: 300px; /* Reduz a altura das imagens em telas maiores */
+    }
+
+    /* As seções com margens fixas */
+    section {
+        margin: 20px auto;
+    }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 768px) {
+    /* Imagens maiores no celular */
+    .imagem-padrao {
+        max-height: 250px; /* Limita a altura para telas menores */
+    }
+
+    /* Ajuste das margens no celular */
+    section {
+        margin: 10px; /* Deixa uma margem confortável de 10px */
+        padding: 15px; /* Reduz o padding para mais espaço */
+    }
+
+    /* Centralização das divs */
+    .content, section {
+        margin: 10px; /* Ajusta a margem para evitar que fiquem coladas */
+    }
 }
